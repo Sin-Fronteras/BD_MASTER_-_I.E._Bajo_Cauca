@@ -10,6 +10,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 </head>
 <body>
 
@@ -23,7 +24,7 @@
             Base de datos de instituciones educativas y proyectos de la región del Bajo Cauca
         </div>
         <div class="small" style="color: var(--tertiary); font-weight: 700; margin-top: 2px;">
-            Alianza por la Educación. La Fundación de Mineros - Sin Fronteras
+            Alianza por la Educación Mineros - Sin Fronteras
         </div>
       </div>
     </header>
@@ -35,7 +36,7 @@
           <div class="control-group">
             <label class="small">SEDES Educativas</label>
             <div class="row suggestions">
-              <input id="searchLocal" type="search" placeholder="Buscar sede, municipio, código..." autocomplete="off"/>
+              <input id="searchLocal" type="search" placeholder="Buscar Institución, Sede, Código..." autocomplete="off"/>
               <button id="clearLocal" class="ghost" title="Limpiar y volver al inicio">✕</button>
               <div id="suggestLocal" class="suggest-list" style="display:none" role="listbox"></div>
             </div>
@@ -61,10 +62,7 @@
               <option value="">— Todos —</option>
             </select>
           </div>
-          <div style="display:flex; gap:8px; margin-left: auto;">
-            <button id="applyFilters" class="primary">Aplicar</button>
           </div>
-        </div>
       </aside>
 
       <main class="card">
@@ -72,8 +70,9 @@
           <div>
             <div class="results-header" style="font-size:14px;">
                 Resultados: <span id="resultsCount" style="color:var(--secondary); font-size:16px;">—</span>
+                <span id="resultsSums" style="margin-left:10px; font-weight:400; color:#444;"></span>
             </div>
-            <div class="meta-sm" id="activeFilters" style="color:var(--primary); font-weight:600;"></div>
+            <div class="meta-sm" id="activeFilters"></div>
           </div>
           <button id="btnHome">⬅ Volver al inicio</button>
         </div>
@@ -81,15 +80,26 @@
         <div id="summaryArea">
           <div class="kpi-grid">
             <div class="kpi">
-              <div class="meta">TOTAL ESTUDIANTES (Suma)</div>
+              <div class="meta">TOTAL ESTUDIANTES</div>
               <div id="kpiTotal" class="kpi-val">—</div>
+            </div>
+            <div class="kpi">
+              <div class="meta">TOTAL DOCENTES</div>
+              <div id="kpiDocentes" class="kpi-val" style="color:var(--quaternary);">—</div>
+            </div>
+            <div class="kpi">
+                <div class="meta">RURAL / URBANO</div>
+                <div class="kpi-val" style="font-size:15px;">
+                    <span id="kpiRural" style="color:var(--tertiary)">0</span> / 
+                    <span id="kpiUrbano" style="color:var(--primary)">0</span>
+                </div>
             </div>
             <div class="kpi">
               <div class="meta">SEDES (Conteo)</div>
               <div id="kpiSedes" class="kpi-val">—</div>
             </div>
           </div>
-          <div style="margin-top:20px; height: 200px; position:relative;">
+          <div style="margin-top:20px; height: 300px; position:relative;">
             <canvas id="chartSedes"></canvas>
           </div>
         </div>
