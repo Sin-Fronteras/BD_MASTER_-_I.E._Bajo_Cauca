@@ -1,4 +1,4 @@
-/* style.css - VERSIÓN FINAL (Mejoras Usabilidad) */
+/* style.css - VERSIÓN MEJORADA 1 */
 
 :root {
   --bg: #f5f7fb;
@@ -7,6 +7,7 @@
   --primary: #336699;  /* Azul Institucional */
   --secondary: #F7994B;/* Naranja */
   --tertiary: #339966; /* Verde */
+  --quaternary: #9933FF; /* Morado (Nuevo) */
   --radius: 12px;
   --shadow: 0 6px 18px rgba(51, 102, 153, 0.15);
 }
@@ -149,7 +150,8 @@ button.ghost:hover {
   color: #fff;
   border: none;
   font-weight: 600;
-  display: none; /* Se muestra solo al buscar */
+  display: none;
+  /* Se muestra solo al buscar */
 }
 #btnHome:hover { filter: brightness(1.05); }
 
@@ -180,9 +182,11 @@ button.ghost:hover {
   background: #f0f7ff;
 }
 
-.suggest-line-main { font-weight: 700; color: var(--primary); margin-bottom: 2px; }
+.suggest-line-main { font-weight: 700; color: var(--primary);
+  margin-bottom: 2px; }
 .suggest-line-sub { color: var(--muted); }
-strong { background: #fff3cd; color: #111; padding: 0 2px; }
+strong { background: #fff3cd; color: #111; padding: 0 2px;
+}
 
 /* TABLA */
 .table-container { overflow-x: auto; margin-top: 15px; }
@@ -209,13 +213,17 @@ tbody td {
   border-bottom: 1px solid #f3f4f6;
   color: #333;
 }
-tbody tr { cursor: pointer; transition: background 0.1s; }
+tbody tr { cursor: pointer;
+  transition: background 0.1s; }
 tbody tr:hover { background: #e0f2fe !important; }
+
+/* CLASES UTILITARIAS NUEVAS */
+.text-center { text-align: center !important; }
 
 /* KPIs */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); /* Ajustado para más columnas */
   gap: 15px;
   margin-top: 10px;
 }
@@ -232,9 +240,18 @@ tbody tr:hover { background: #e0f2fe !important; }
   color: var(--secondary);
   margin-top: 4px;
 }
+
 .results-header { font-weight: 700; color: var(--primary); }
 .meta { font-size: 11px; color: var(--muted); font-style: italic; }
+
+/* Filtros activos (Mejora solicitada #7) */
 .meta-sm { font-size: 11px; color: var(--muted); }
+#activeFilters {
+    color: var(--tertiary) !important; /* Verde */
+    font-size: 1.2em; /* Más grande */
+    font-weight: 800;
+    margin-top: 5px;
+}
 
 /* MODAL */
 .modal-back {
@@ -259,6 +276,7 @@ tbody tr:hover { background: #e0f2fe !important; }
 }
 
 @media (max-width: 768px) {
-  .controls { grid-template-columns: 1fr; }
+  .controls { grid-template-columns: 1fr;
+  }
   header { flex-direction: column; text-align: center; }
 }
